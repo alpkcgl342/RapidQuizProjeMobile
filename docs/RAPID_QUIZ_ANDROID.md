@@ -171,6 +171,7 @@ Backend şimdilik yerelde çalışır (backend README'deki "Hızlı başlangıç
 |---|---|
 | Backend `.env` → `ALLOWED_HOSTS=localhost,127.0.0.1,10.0.2.2` | Emülatör `Host: 10.0.2.2` gönderir; eklenmezse Django `400 Bad Request` döner. Gerçek cihazda bilgisayarın IP'si de eklenir ve `runserver 0.0.0.0:8000` ile başlatılır. |
 | Cleartext HTTP yalnızca debug'da | `src/debug/res/xml/network_security_config.xml` ile `10.0.2.2` (ve gerekirse yerel IP) için `cleartextTrafficPermitted="true"`; release HTTPS zorunlu. |
+| Yerel ağ izni (Android 17+) | targetSdk 37 uygulamalar `ACCESS_LOCAL_NETWORK` izni olmadan `10.0.2.2` / `192.168.x.x` adreslerine ulaşamaz; paketler sessizce düşer ve istekler zaman aşımına uğrar. İzin yalnızca `src/debug/AndroidManifest.xml`'de tanımlıdır ve debug sürüm açılışta ister. Release'te gerekmez (canlı API herkese açık HTTPS). |
 | CORS | Mobil istemci CORS'a tabi değildir, ayar gerekmez. |
 | Throttle | Oturum açma 30/saat, cevap 600/saat, skor 20/saat (IP bazlı). Yoğun testte `429` görülebilir; backend `.env`'de `THROTTLE_*` gevşetilebilir. |
 
@@ -407,8 +408,10 @@ data class QuizState(
 - **advance()**: geri bildirim süresi bitince bekleyen soruyu göster; yoksa `FINISHED`.
 - **Süre doldu:** istemci sayacı 0'a inince `answer(null)`; sonucu (`timeout`) sunucu belirler.
 - **resync()**: `current-question` → soru varsa göster; yoksa `summary` çek → `FINISHED`/`SUBMITTED`.
-- **Arka plan:** Uygulama öne gelince (`Lifecycle.ON_START`) oyun sürüyorsa `resync()`
-  (backend §11: arka planda süre işlemeye devam eder; soru muhtemelen `timeout` olmuştur).
+- **Arka plan:** Uygulama öne gelince (`Lifecycle.ON_START`) `QuizViewModel` zamanlayıcıları
+  duvar saatine göre yeniden kurar; süre dolmuşsa hemen `answer(null)` gönderilir
+  (backend §11: arka planda süre işlemeye devam eder). `delay` cihaz uykusunu saymadığı için
+  bu gereklidir. Ağ koparsa `resync()` "Devam et" ile tetiklenir.
 - **Token saklama:** Token yalnızca bellekte (`QuizSessionManager`) tutulur; diske yazılmaz.
   Süreç ölürse oturum kaybolur ve kullanıcı ana ekrandan yeniden başlar (web'de sekmeyi
   kapatmakla aynı). Ekran döndürme süreci öldürmediği için etkilenmez.

@@ -1,3 +1,95 @@
 <resources>
-    <string name="app_name">RapidQuizMobile</string>
+    <string name="app_name">Rapid Quiz</string>
+
+    <!-- Ortak -->
+    <string name="logo_text">Rapid Quiz</string>
+    <string name="action_retry">Tekrar dene</string>
+    <string name="action_home">Ana sayfa</string>
+    <string name="action_home_title">Ana Sayfa</string>
+    <string name="action_play_again">Tekrar Oyna</string>
+    <string name="action_leaderboard">Skor Tablosu</string>
+    <string name="loading">Yükleniyor</string>
+    <string name="error_generic_title">Bir sorun oluştu</string>
+    <string name="error_network">Sunucuya ulaşılamadı. Bağlantını kontrol et.</string>
+    <string name="error_unexpected">Sunucu beklenmeyen bir yanıt verdi.</string>
+
+    <!-- Ana ekran -->
+    <string name="home_tagline">Her soruya &lt;b>5 saniye&lt;/b>. Hızlı düşün, hızlı dokun.</string>
+    <string name="home_title">Kategorini seç</string>
+    <string name="home_loading">Kategoriler yükleniyor</string>
+    <string name="home_error_title">Kategoriler yüklenemedi</string>
+    <string name="home_empty">Henüz kategori yok.</string>
+    <string name="home_notice_expired">Oturumun süresi doldu. Yeni bir tur başlatabilirsin.</string>
+    <string name="home_notice_lost">Oturum bulunamadı. Yeni bir tur başlatabilirsin.</string>
+    <string name="category_questions">%1$d soru</string>
+    <string name="category_preparing">Hazırlanıyor</string>
+    <string name="category_a11y_play">%1$s, %2$d soru. Oyna</string>
+    <string name="category_a11y_preparing">%1$s, hazırlanıyor</string>
+
+    <!-- Hazırlık -->
+    <string name="countdown_go">BAŞLA!</string>
+    <string name="countdown_hint">Her soru için 5 saniyen var. Hazır ol!</string>
+    <string name="countdown_insufficient">Bu kategori şu an hazırlanıyor.</string>
+    <string name="countdown_failed">Oturum başlatılamadı.</string>
+
+    <!-- Soru -->
+    <string name="quiz_exit">Oyundan çık</string>
+    <string name="quiz_exit_title">Oyundan çıkılsın mı?</string>
+    <string name="quiz_exit_message">Çıkarsan skorun kaydedilmez, emin misin?</string>
+    <string name="quiz_exit_confirm">Çık</string>
+    <string name="quiz_exit_cancel">Devam et</string>
+    <string name="quiz_progress">Soru &lt;b>%1$d&lt;/b> / %2$d</string>
+    <string name="quiz_progress_a11y">Soru %1$d / %2$d</string>
+    <string name="quiz_score_a11y">Puan: %1$s</string>
+    <string name="quiz_options_a11y">Şıklar</string>
+    <string name="quiz_disconnected_title">Bağlantı koptu</string>
+    <string name="quiz_disconnected_message">Devam etmek için dokun; kaldığın yerden sürdüreceğiz.</string>
+    <string name="quiz_disconnected_action">Devam et</string>
+    <string name="quiz_seconds_left">%1$d saniye kaldı</string>
+    <string name="option_correct_a11y">doğru cevap</string>
+    <string name="option_wrong_a11y">yanlış</string>
+    <string name="feedback_correct">Doğru!</string>
+    <string name="feedback_wrong">Yanlış</string>
+    <string name="feedback_timeout">Süre doldu!</string>
+    <string name="feedback_points">+%1$d</string>
+    <string name="feedback_points_a11y">+%1$d puan</string>
+
+    <!-- Sonuç -->
+    <string name="result_loading">Sonuç hazırlanıyor</string>
+    <string name="result_headline_lightning">Şimşek gibisin!</string>
+    <string name="result_headline_great">Harika iş!</string>
+    <string name="result_headline_good">Çok iyi gidiyorsun!</string>
+    <string name="result_headline_ok">Fena değil!</string>
+    <string name="result_headline_warmup">Isınma turu bitti, şimdi asıl tur!</string>
+    <string name="result_max">/ %1$s puan</string>
+    <string name="result_score_a11y">%1$s puan</string>
+    <string name="result_correct">Doğru</string>
+    <string name="result_wrong">Yanlış</string>
+    <string name="result_missed">Kaçırılan</string>
+    <string name="result_accuracy">Doğruluk</string>
+    <string name="result_accuracy_value">%%%1$d</string>
+    <string name="result_avg_time">Ortalama süre</string>
+    <string name="result_avg_time_value">%1$s sn</string>
+    <string name="result_estimated_rank">Skorunu kaydedersen &lt;b>%1$d. sıraya&lt;/b> yerleşeceksin!</string>
+    <string name="result_saved">Skorun kaydedildi.</string>
+    <string name="result_save">Skoru Kaydet</string>
+
+    <!-- Takma ad -->
+    <string name="nickname_score">&lt;b>%1$s&lt;/b> puanın skor tablosuna yazılacak.</string>
+    <string name="nickname_label">Takma adın ne?</string>
+    <string name="nickname_hint">2–20 karakter. Harf, rakam, boşluk, _ ve - kullanabilirsin.</string>
+    <string name="nickname_error_length">Takma ad 2-20 karakter olmalı.</string>
+    <string name="nickname_error_chars">Yalnızca harf, rakam, boşluk, _ ve - kullanabilirsin.</string>
+    <string name="nickname_save">Kaydet</string>
+    <string name="nickname_skip">Kaydetmeden geç</string>
+
+    <!-- Skor tablosu -->
+    <string name="leaderboard_title">Skor Tablosu</string>
+    <string name="leaderboard_overall">Genel</string>
+    <string name="leaderboard_loading">Skorlar yükleniyor</string>
+    <string name="leaderboard_error_title">Skorlar yüklenemedi</string>
+    <string name="leaderboard_empty_title">Henüz skor yok</string>
+    <string name="leaderboard_empty_text">İlk sıraya adını yazdırmak için hemen oyna!</string>
+    <string name="leaderboard_you">Sen</string>
+    <string name="leaderboard_rank_a11y">%1$d. sıra</string>
 </resources>
