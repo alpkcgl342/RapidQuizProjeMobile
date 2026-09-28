@@ -170,7 +170,8 @@ Backend şimdilik yerelde çalışır (backend README'deki "Hızlı başlangıç
 | Gereksinim | Neden / Nasıl |
 |---|---|
 | Backend `.env` → `ALLOWED_HOSTS=localhost,127.0.0.1,10.0.2.2` | Emülatör `Host: 10.0.2.2` gönderir; eklenmezse Django `400 Bad Request` döner. Gerçek cihazda bilgisayarın IP'si de eklenir ve `runserver 0.0.0.0:8000` ile başlatılır. |
-| Cleartext HTTP yalnızca debug'da | `src/debug/res/xml/network_security_config.xml` ile `10.0.2.2` (ve gerekirse yerel IP) için `cleartextTrafficPermitted="true"`; release HTTPS zorunlu. |
+| Cleartext HTTP yalnızca debug'da | `src/debug/res/xml/network_security_config.xml` debug'da düz HTTP'ye genel izin verir (bilgisayarın yerel IP'si DHCP ile değişebildiği için adres listesi tutulmaz); release HTTPS zorunlu. |
+| Gerçek telefon | `local.properties` → `API_BASE_URL=http://<bilgisayar-IP>:8000/api/v1/`; backend `.env` → `ALLOWED_HOSTS`'a aynı IP; Windows Güvenlik Duvarı'nda 8000 portu yerel ağa açık olmalı. Telefon ile bilgisayar aynı ağda olmalı. |
 | Yerel ağ izni (Android 17+) | targetSdk 37 uygulamalar `ACCESS_LOCAL_NETWORK` izni olmadan `10.0.2.2` / `192.168.x.x` adreslerine ulaşamaz; paketler sessizce düşer ve istekler zaman aşımına uğrar. İzin yalnızca `src/debug/AndroidManifest.xml`'de tanımlıdır ve debug sürüm açılışta ister. Release'te gerekmez (canlı API herkese açık HTTPS). |
 | CORS | Mobil istemci CORS'a tabi değildir, ayar gerekmez. |
 | Throttle | Oturum açma 30/saat, cevap 600/saat, skor 20/saat (IP bazlı). Yoğun testte `429` görülebilir; backend `.env`'de `THROTTLE_*` gevşetilebilir. |
